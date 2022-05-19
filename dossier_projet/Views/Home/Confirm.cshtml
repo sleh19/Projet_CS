@@ -1,0 +1,28 @@
+﻿<?php
+	session_start();
+?>
+<html>
+	<head>
+		<title></title>
+		<link href="Views/Style/style.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="header">
+				<h1>Gestion des Stocks</h1>
+			</div>
+			<div id="content">
+				<div id="Menu">
+					<h3>Menu</h3>
+					<ul>
+						<li><a asp-action="Clients">Clients</a></li>
+						<li><a asp-action="Stocks">Stocks</a></li>
+						<li><a asp-action="Achats">Achats</a></li>
+					</ul>
+				</div>
+				<div id="main">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+﻿@model projet.Models.Admin
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>
+        #login-div {
+            position: absolute;
+            left: 40%;
+            top: 40%;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .field-validation-error {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-div">
+     <form asp-action="Inscription" method="post">
+            <table>
+                <tr>
+                    <td></td>
+                                        <td style="text-decoration:underline">Inscription</td>
+                </tr>
+                                <tr>
+                    <td>
+                        <label asp-for="Nom">Nom</label>
+                    </td>
+                    <td>
+                        <input asp-for="Nom" />
+                    </td>
+                </tr>
+                                <tr>
+                    <td>
+                        <label asp-for="Prenom">Prenom</label>
+                    </td>
+                    <td>
+                        <input asp-for="Prenom" />
+                    </td>
+                </tr>
+                                <tr>
+                    <td>
+                        <label asp-for="NumCin">NumCin</label>
+                    </td>
+                    <td>
+                        <input asp-for="NumCin" />
+                    </td>
+                </tr>
+                                <tr>
+                    <td>
+                        <label asp-for="Adresse">Adresse</label>
+                    </td>
+                    <td>
+                        <input asp-for="Adresse" />
+                    </td>
+                </tr>
+                                <tr>
+                    <td>
+                        <label asp-for="NumPhone">Numero telephone</label>
+                    </td>
+                    <td>
+                        <input asp-for="NumPhone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label asp-for="Username">Username</label>
+                    </td>
+                    <td>
+                        <input asp-for="Username" />
+                    </td>
+                </tr>
+                
+
+                <tr>
+                    <td><label asp-for="Password">Password</label></td>
+                    <td><input type="password" asp-for="Password"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="submit" value="Sign" />
+                        <input type="reset" name="reset" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+ </form>
+
+    </div>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
