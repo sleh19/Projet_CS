@@ -1,0 +1,30 @@
+﻿@model Produit
+<html>
+   <head>
+       <title>Ajout produit</title>
+   </head> 
+   <body>
+       <form asp-action="CreateProd" method="post">
+       <h1>Ajouter un produit</h1>
+
+       <div>
+           <label asp-for="Nom">Nom</label>
+           <input asp-for="Nom"/>
+       </div>
+       <div>
+           <label asp-for="Quantite">Quantite</label>
+           <input asp-for="Quantite"/>
+       </div>
+       <div>
+           <label asp-for="PrixUnitaire">Prix unitaire</label>
+           <input asp-for="PrixUnitaire"/>
+       </div>
+       <div>
+           <label asp-for="Marque">Marque</label>
+           <input asp-for="Marque"/>
+       </div>
+       <button type="submit">Ajouter</button>
+       <button type="reset">Annuler</button>
+       </form>
+   </body>
+</html>

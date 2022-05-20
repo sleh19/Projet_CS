@@ -37,7 +37,7 @@
                             <td>@stock.PrixUnitaire</td>
                             <td>@stock.Marque</td>
                             <td>
-                         @Html.ActionLink("Edit", "Edit", new { id = stock.Id }) |
+                         @Html.ActionLink("Modifier", "ModifierProd", new { id = stock.Id }) |
                          @Html.ActionLink("Supprimer", "Supprimer_prod", new { id = stock.Id })
                             </td>
                         </tr>
@@ -46,5 +46,5 @@
             }
         </tbody>
     </table>
-    <a asp-action="Create_prod">Ajouter un nouveau produit</a>
+    <a asp-action="CreateProd">Ajouter un nouveau produit</a>
 </div>
