@@ -38,7 +38,13 @@ public class HomeController : Controller
         {
             return View("Confirm", admin);
         }
-        else { return View(); }
+        else { return View(""); }
+
+    }
+
+    public ViewResult Confirm()
+    {
+        return View();
 
     }
 
@@ -85,11 +91,11 @@ public class HomeController : Controller
         db.SaveChanges();
         return RedirectToAction("Stocks");
     }
-
+    [HttpGet]
     // GET: Employee/Edit/5
     public ActionResult ModifierProd(int id)
     {
-        var prod = db.prods.Where(p => p.Id == id);
+        var prod = db.prods.Find(id);
 
         return View(prod);
     }
@@ -100,14 +106,13 @@ public class HomeController : Controller
     [HttpPost]
     public ActionResult ModifierProd(Produit prod, int id)
     {
-            //update student in DB using EntityFramework in real-life application
-            
-            //update list by removing old student and adding updated student for demo purpose
-            var produit = db.prods.Where(p => p.Id == prod.Id).FirstOrDefault();
-            db.prods.Remove(produit);
-            db.prods.Add(produit);
+        var produit = db.prods.Where(p => p.Id == prod.Id).FirstOrDefault();
+        db.Entry(produit).State = EntityState.Modified;
+        db.prods.Remove(produit);
+        db.prods.Add(prod);
         db.SaveChanges();
-            return RedirectToAction("Stocks");
+        return RedirectToAction("Stocks");
+
     }
 
 

@@ -4,7 +4,7 @@ namespace projet.Models
 {
     public class Produit
     {
-        [Key]
+        
         [Required]
         public int Id { get; set; }       
         [Required]
