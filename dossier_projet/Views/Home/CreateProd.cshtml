@@ -4,27 +4,40 @@
        <title>Ajout produit</title>
    </head> 
    <body>
-       <form asp-action="CreateProd" method="post">
        <h1>Ajouter un produit</h1>
-
+       <br />
+       <form asp-action="CreateProd" method="post">
+       <fieldset>
        <div>
+           <p>
            <label asp-for="Nom">Nom</label>
            <input asp-for="Nom"/>
+           </p>
        </div>
        <div>
+           <p>
            <label asp-for="Quantite">Quantite</label>
            <input asp-for="Quantite"/>
+           </p>
        </div>
        <div>
+           <p>
            <label asp-for="PrixUnitaire">Prix unitaire</label>
            <input asp-for="PrixUnitaire"/>
+           </p>
        </div>
        <div>
+           <p>
            <label asp-for="Marque">Marque</label>
            <input asp-for="Marque"/>
+           </p>
        </div>
+       <p>
        <button type="submit">Ajouter</button>
        <button type="reset">Annuler</button>
+       </p>
+       </fieldset>
        </form>
+       <a asp-action="Confirm">Retour</a>
    </body>
 </html>
