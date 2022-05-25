@@ -1,0 +1,55 @@
+﻿@model Client
+<html>
+<head>
+    <title>Ajout client</title>
+</head>
+<body>
+    <h1>Ajouter un client</h1>
+    <br />
+    <form asp-action="CreateClient" method="post">
+        <fieldset>
+            <div>
+                <p>
+                    <label asp-for="NumCin">Numéro de la CIN </label>
+                    <input asp-for="NumCin" />
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label asp-for="Prenom">Prénom</label>
+                    <input asp-for="Prenom" />
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label asp-for="Nom">Nom</label>
+                    <input asp-for="Nom" />
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label asp-for="TypeClient">TypeClient</label>
+                    <input asp-for="TypeClient" />
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label asp-for="Adresse">Adresse</label>
+                    <input asp-for="Adresse" />
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label asp-for="NumPhone">Telephone</label>
+                    <input asp-for="NumPhone" />
+                </p>
+            </div>
+            <p>
+                <button type="submit">Ajouter</button>
+                <button type="reset">Annuler</button>
+            </p>
+        </fieldset>
+    </form>
+    <a asp-action="Confirm">Retour</a>
+</body>
+</html>
