@@ -1,0 +1,45 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@{
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>AllClients</title>
+    </head>
+    <body>
+
+        <h2>All clients page</h2>
+
+        <table class="table table-bordred table-striped table-hover">
+            <thead>
+                <tr><th>nom</th><th colspan="3">adress</th><th>type</th><th>action</th></tr>
+            </thead>
+            <tbody>
+                @foreach (Client client in Model)
+                {
+                    <tr>
+                        <td>@client.NumCin</td>
+                        <td>@client.Prenom</td>
+                        <td>@client.Nom</td>
+                        <td>@client.TypeClient</td>
+                        <td>@client.Adresse</td>
+                        <td>@client.NumPhone</td>
+                        <td>
+                            <a href="@Url.Action("Client",new {client.NumCin,client.Prenom,client.Nom,client.TypeClient,client.Adresse,client.NumPhone})" class="btn btn-secondary"> Update</a>
+                            @using (Html.BeginForm("Delete", "Client", new { id = client.NumCin })
+                           )
+                            {
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            }
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </body>
+</html>
+}
