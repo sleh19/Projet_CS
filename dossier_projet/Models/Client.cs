@@ -4,6 +4,9 @@ namespace projet.Models
 {
     public class Client
     {
+        [Key]
+        [Required]
+        public int Id { get; set; }
         [Required]
         public int NumCin { get; set; }
         [Required]

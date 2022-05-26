@@ -47,6 +47,7 @@ public class HomeController : Controller
         return View();
 
     }
+    
 //Prod
     private ProdDbContexte db = new ProdDbContexte();
     // GET: Employee
@@ -115,6 +116,71 @@ public class HomeController : Controller
 
     }
 
+    CltDbContexte clt_db = new CltDbContexte();
 
+    [HttpGet]
+    public ActionResult CreateClient() { return View(); }
+
+    [HttpPost]
+    public ActionResult CreateClient(Client clt)
+    {
+        try
+        {
+            clt_db.clients.Add(clt);
+            clt_db.SaveChanges();
+            return RedirectToAction("AllClients");
+        }
+        catch
+        {
+            return View();
+        }
+    }
+
+    public ActionResult AllClients()
+    {
+        var clients = from e in clt_db.clients
+                    orderby e.Id
+                    select e;
+        return View("AllClients", clients);
+    }
+
+    public ActionResult ModifierClient(int id)
+    {
+        var clt = clt_db.clients.Find(id);
+
+        return View(clt);
+    }
+
+
+
+    // POST: Employee/Edit/5
+    [HttpPost]
+    public ActionResult ModifierClient(Client custom, int id)
+    {
+        var client = clt_db.clients.Where(c => c.Id == custom.Id).FirstOrDefault();
+        clt_db.clients.Remove(client);
+        clt_db.clients.Add(custom);
+        clt_db.SaveChanges();
+        return RedirectToAction("AllClients");
+
+    }
+
+    public ActionResult SupprimerClient(int id)
+    {
+        Client clt = clt_db.clients.Find(id);
+        clt_db.clients.Remove(clt);
+        clt_db.SaveChanges();
+        return RedirectToAction("AllClients");
+    }
+    public ActionResult Cart()
+    {
+        var stock = from e in db.prods
+                    orderby e.Id
+                    select e;
+        return View("Cart",stock);
+    }
+
+
+    
 }
 

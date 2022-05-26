@@ -1,45 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+        ViewData["Title"] = "Clients";
+        string[] TableHeaders = new string[] {
+                        "Id"
+                        ,"CIN"
+                        ,"Nom"
+                        ,"Prenom"
+                        ,"TypeClient"
+                        ,"Adresse"
+                        ,"Numéro téléphone"
+                        };
 }
 
-@{
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>AllClients</title>
-    </head>
-    <body>
 
         <h2>All clients page</h2>
-
-        <table class="table table-bordred table-striped table-hover">
-            <thead>
-                <tr><th>Cin</th><th colspan="2">Prenom & Nom</th><th>TypeClient</th><th>Adresse</th><th>NumPhone</th><th>action</th></tr>
-            </thead>
+<div class="table">
+        <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                @{
+                    foreach (var head in TableHeaders)
+                    {
+                        <th>
+                            @head
+                        </th>
+                    }
+                }
+            </tr>
+        </thead>
             <tbody>
-                @foreach (Client client in Model)
-                {
+                @{
+                    if (Model != null)
+                    {
+                        foreach (var client in Model)
+                        {
                     <tr>
+                        <td>@client.Id</td>
                         <td>@client.NumCin</td>
-                        <td>@client.Prenom</td>
                         <td>@client.Nom</td>
+                        <td>@client.Prenom</td>
                         <td>@client.TypeClient</td>
                         <td>@client.Adresse</td>
                         <td>@client.NumPhone</td>
-                        <td>
-                            <a href="@Url.Action("Client",new {client.NumCin,client.Prenom,client.Nom,client.TypeClient,client.Adresse,client.NumPhone})" class="btn btn-secondary"> Update</a>
-                            @using (Html.BeginForm("Delete", "Client", new { id = client.NumCin })
-                           )
-                            {
-                                <input type="submit" value="Delete" class="btn btn-danger" />
-                            }
-                        </td>
+                            <td>
+                         @Html.ActionLink("Modifier", "ModifierClient", new { id = client.Id }) |
+                         @Html.ActionLink("Supprimer", "SupprimerClient", new { id = client.Id })
+                            </td>
 
                     </tr>
+                    }
                 }
+            }
             </tbody>
         </table>
+            <a asp-action="CreateClient">Ajouter un nouveau client</a>
+        </div>
+           <a asp-action="Confirm">Retour</a>
 
-    </body>
-</html>
-}
